@@ -87,10 +87,89 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "EHQy":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+/* harmony default export */ __webpack_exports__["a"] = ({"home":"home__UoRM-"});
+
+/***/ }),
+
 /***/ "HteQ":
 /***/ (function(module, exports) {
 
 module.exports = require("preact");
+
+/***/ }),
+
+/***/ "KdXF":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(h) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Home; });
+/* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("QP3f");
+var _package_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t("QP3f", 1);
+/* harmony import */ var _Home_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("EHQy");
+//import { useCallback, useEffect, useState } from 'preact/hooks';
+
+
+
+// ??? add server ip address, save in local storage.
+// ??? allow server ip address editing
+// ??? add /status to sonos-server to get status of all devices
+function Home() {
+  return h("div", {
+    className: _Home_module_css__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].home
+  }, h("div", null, "HOME"), h("div", null, "Server Status"), h("div", null, "v".concat(_package_json__WEBPACK_IMPORTED_MODULE_0__[/* version */ "a"])), h("button", null, "Do It @"), h("div", null, h("label", {
+    for: "pet-select"
+  }, "Choose a pet:"), h("select", {
+    name: "pets",
+    id: "pet-select"
+  }, h("option", {
+    value: ""
+  }, "Please choose an option"), h("option", {
+    value: "dog"
+  }, "Dog"), h("option", {
+    value: "cat"
+  }, "Cat"), h("option", {
+    value: "hamster"
+  }, "Hamster"), h("option", {
+    value: "parrot"
+  }, "Parrot"), h("option", {
+    value: "spider"
+  }, "Spider"), h("option", {
+    value: "goldfish"
+  }, "Goldfish"))));
+}
+/*
+import { TRIMET_API_KEY } from '../.env';
+
+const TRIMET_URL = 'https://developer.trimet.org/ws/V2/arrivals?json=true&minutes=30&showPosition=false&';
+const MS_PER_MIN = 60 * 1000;
+
+export async function getArrivals(stopId, cache, useCache = true) {
+  const now = Date.now();
+  const last = useCache && cache.get(stopId, now);
+
+  try {
+    if (last) {
+      return parseArrivals(last, now);
+    }
+
+    const response = await fetch(getUrl(stopId));
+    const data = await response.json();
+
+    cache.set(stopId, now, data);
+
+    return parseArrivals(data, now);
+  } catch (e) {
+    console.error(`Fetch error (${e})`);
+    return [];
+  }
+}
+*/
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
 
 /***/ }),
 
@@ -116,15 +195,25 @@ module.exports = JSON.parse("{\"a\":\"0.1.3\"}");
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(h) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("MV5A");
-/* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QP3f");
-var _package_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t("QP3f", 1);
+/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("KdXF");
+/* harmony import */ var _reset_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("xGyD");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("MV5A");
+
 
 
 function App() {
-  return h("div", null, h("h1", null, "Hello, World!"), h("div", null, "v".concat(_package_json__WEBPACK_IMPORTED_MODULE_1__[/* version */ "a"])));
+  return h(_components_Home__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"], null);
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
+
+/***/ }),
+
+/***/ "xGyD":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// extracted by mini-css-extract-plugin
+
 
 /***/ })
 
