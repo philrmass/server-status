@@ -78,7 +78,7 @@ module.exports =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/server-status";
+/******/ 	__webpack_require__.p = "/server-status/";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -106,7 +106,7 @@ module.exports = require("preact");
 /***/ "QP3f":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"a\":\"0.1.1\"}");
+module.exports = JSON.parse("{\"a\":\"0.1.2\"}");
 
 /***/ }),
 
