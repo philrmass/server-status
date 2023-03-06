@@ -1,6 +1,6 @@
 export default (config, env, helpers) => {
   const isDev = Boolean(process.env.DEV);
-  config.output.publicPath = isDev ? '' : '/server-status';
+  config.output.publicPath = isDev ? '' : '/server-status/';
   console.log(`Using ${isDev ? 'dev' : 'prod'} publicPath='${config.output.publicPath}'`);
 
   // use the public path in your app as 'process.env.PUBLIC_PATH'
