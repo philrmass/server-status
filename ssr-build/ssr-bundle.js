@@ -103,6 +103,13 @@ module.exports = require("preact");
 
 /***/ }),
 
+/***/ "QP3f":
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"a\":\"0.1.0\"}");
+
+/***/ }),
+
 /***/ "QfWi":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -110,9 +117,12 @@ module.exports = require("preact");
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(h) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
 /* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("MV5A");
+/* harmony import */ var _package_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("QP3f");
+var _package_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t("QP3f", 1);
+
 
 function App() {
-  return h("div", null, h("h1", null, "Hello, World!"));
+  return h("div", null, h("h1", null, "Hello, World!"), h("div", null, "v".concat(_package_json__WEBPACK_IMPORTED_MODULE_1__[/* version */ "a"])));
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("HteQ")["h"]))
 
