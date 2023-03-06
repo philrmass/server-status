@@ -106,7 +106,7 @@ module.exports = require("preact");
 /***/ "QP3f":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"a\":\"0.1.0\"}");
+module.exports = JSON.parse("{\"a\":\"0.1.1\"}");
 
 /***/ }),
 
