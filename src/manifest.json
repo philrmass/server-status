@@ -1,14 +1,20 @@
 {
   "name": "server-status",
   "short_name": "server-status",
-  "start_url": "/",
+  "start_url": "/server-status/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
   "theme_color": "#673ab8",
   "icons": [
     {
-      "src": "/assets/icon.png",
+      "src": "/server-status/assets/icon.png",
+      "type": "image/png",
+      "purpose": "maskable",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/server-status/assets/icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
