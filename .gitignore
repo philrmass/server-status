@@ -3,3 +3,4 @@
 size-plugin.json
 /*.log
 *.swp
+.DS_Store
