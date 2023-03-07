@@ -265,7 +265,7 @@ export async function getArrivals(stopId, cache, useCache = true) {
 /***/ "QP3f":
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"a\":\"0.1.3\"}");
+module.exports = JSON.parse("{\"a\":\"0.1.4\"}");
 
 /***/ }),
 
