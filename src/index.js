@@ -1,11 +1,7 @@
-import './style';
-import { version } from '../package.json';
+import Home from './components/Home';
+import './reset.css';
+import './style.css';
 
 export default function App() {
-  return (
-    <div>
-      <h1>Hello, World!</h1>
-      <div>{ `v${version}` }</div>
-    </div>
-  );
+  return <Home />;
 }

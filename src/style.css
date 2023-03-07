@@ -1,8 +1,35 @@
-html, body {
-	font: 14px/1.21 'Helvetica Neue', arial, sans-serif;
-	font-weight: 400;
+:root {
+  --body-font: "Inconsolata", monospace;
+  --grey-dark: #2a282c;
+  --grey: #abacad;
+  --border: var(--grey);
+  --text: var(--grey-dark);
+  --font-small: 0.8em;
+  --font-large: 1.4em;
+  --size-8: 8px;
+  --size-16: 16px;
+  --size-24: 24px;
 }
 
-h1 {
-	text-align: center;
+@font-face {
+  font-family: Inconsolata;
+  src: url("./assets/Inconsolata-VariableFont_wdth,wght.ttf") format("truetype");
+}
+
+html, body {
+  color: var(--text);
+  font-family: var(--body-font);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input:focus-visible,
+select:focus-visible {
+  outline: 0;
+}
+
+section + section {
+  border-top: 1px solid var(--border);
+  padding-top: var(--size-16);
+  margin-top: var(--size-16);
 }

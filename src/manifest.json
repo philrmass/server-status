@@ -14,7 +14,7 @@
       "sizes": "512x512"
     },
     {
-      "src": "/server-status/assets/icon.png",
+      "src": "server-status/assets/icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
