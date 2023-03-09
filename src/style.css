@@ -28,8 +28,31 @@ select:focus-visible {
   outline: 0;
 }
 
+input[type="text"] {
+  border-bottom: 1px solid transparent;
+  font-weight: 600;
+}
+
+input[type="text"]:focus {
+  border-bottom: 1px solid var(--text);
+}
+
 section + section {
   border-top: 1px solid var(--border);
   padding-top: var(--size-16);
   margin-top: var(--size-16);
+}
+
+.home {
+  padding: var(--size-16) var(--size-24);
+}
+
+.title {
+  font-size: var(--font-large);
+}
+
+.version {
+  display: flex;
+  justify-content: flex-end;
+  font-size: var(--font-small);
 }
