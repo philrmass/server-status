@@ -3,7 +3,7 @@ import { useInterval, useVisibility } from 'utilities/hooks';
 import TextInput from './TextInput';
 
 function getTime(now) {
-  return (Math.round(now / 1000) % 100);
+  return (new Date(now)).toLocaleTimeString();
 }
 
 export default function Status({ address, setAddress }) {
@@ -20,7 +20,7 @@ export default function Status({ address, setAddress }) {
     <section>
       <span className="title">Server Status </span>
       <span>{ time }</span>
-      <div>
+      <div className="indent-1">
         <TextInput 
           value={address}
           onChange={(value) => setAddress(value)}
