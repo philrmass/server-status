@@ -20,7 +20,6 @@ function parseSong(status, track) {
     return {};
   }
 
-  console.log('TRACK', track);
   const { album, artist, duration, title } = track;
   return { album, artist, duration, title };
 }
@@ -110,12 +109,14 @@ function renderStatus(status) {
 
 export default function Sonos({ address, port }) {
   const [status, setStatus] = useState();
+  const [str, setStr] = useState();
   const isVisible = useVisibility();
   const intervalMs = 2000;
   const interval = isVisible ? intervalMs : null;
 
   useInterval(() => {
     const update = async () => {
+      setStr(`ping ${Math.floor(Date.now() / 1000) % 100}`);
       setStatus(await getStatus(address, port));
     };
 
@@ -126,6 +127,7 @@ export default function Sonos({ address, port }) {
     <section>
       <span className="title">Sonos Server</span>
       { renderStatus(status) }
+      <span>{`str [${str}]`}</span>
     </section>
   );
 }
