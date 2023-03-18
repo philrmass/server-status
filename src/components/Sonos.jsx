@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import classnames from 'classnames';
 import { useInterval, useVisibility } from 'utilities/hooks';
+import { toDuration } from '../utilities';
 
 async function getStatus(address, port) {
   try {
@@ -10,7 +11,6 @@ async function getStatus(address, port) {
 
     return parseData(data);
   } catch(err) {
-    console.error(`Fetch error (${err})`);
     return null;
   }
 }
@@ -40,25 +40,6 @@ function parseData(data) {
   });
 }
 
-export function toDuration(totalSec) {
-  const secPerMin = 60;
-  const minPerHr = 60;
-
-  const totalMin = Math.floor(totalSec / secPerMin);
-  const hr = Math.floor(totalMin / minPerHr);
-  const min = totalMin - (hr * minPerHr);
-  const sec = totalSec - (totalMin * secPerMin);
-
-  const minPad = hr > 0 ? 2 : 1;
-  const minStr = min.toFixed(0).padStart(minPad, '0');
-  const secStr = sec.toFixed(0).padStart(2, '0');
-
-  if (hr > 0) {
-    return `${hr}:${minStr}:${secStr}`;
-  }
-  return `${minStr}:${secStr}`;
-}
-
 function renderName(item) {
   const classes = classnames({ playing: item.title });
 
@@ -79,7 +60,7 @@ function renderSong(item) {
   return (
     <>
       <div className="indent-2">
-        <span>{ item.title } </span>
+        <span>{ item.title }, </span>
         <span>{ toDuration(item.duration) }</span>
       </div>
       <div className="indent-2">
@@ -92,7 +73,11 @@ function renderSong(item) {
 
 function renderStatus(status) {
   if (!status) {
-    return null;
+    return <div>No Response</div>;
+  }
+
+  if (status.length === 0) {
+    return <div>No Devices Found</div>;
   }
 
   return (
@@ -124,6 +109,7 @@ export default function Sonos({ address, port }) {
   return (
     <section>
       <span className="title">Sonos Server</span>
+      <span>{` ${port}`}</span>
       { renderStatus(status) }
     </section>
   );

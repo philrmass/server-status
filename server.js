@@ -2,7 +2,7 @@ import koa from 'koa';
 import cors from '@koa/cors';
 import serve from 'koa-static';
 
-const port = 7777;
+const port = 8888;
 
 console.log('Starting server');
 const app = new koa();

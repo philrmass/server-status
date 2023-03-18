@@ -19,12 +19,12 @@ export default function Status({ address, setAddress }) {
   return (
     <section>
       <span className="title">Server Status </span>
-      <span>{ time }</span>
+      <TextInput 
+        value={address}
+        onChange={(value) => setAddress(value)}
+      />
       <div className="indent-1">
-        <TextInput 
-          value={address}
-          onChange={(value) => setAddress(value)}
-        />
+        <span>{ time }</span>
       </div>
     </section>
   );
