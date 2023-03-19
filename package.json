@@ -11,8 +11,8 @@
     "lint": "yarn eslint && yarn stylelint",
     "predeploy": "yarn build",
     "serve": "sirv build --port 8080 --cors --single",
-    "start": "yarn build && node server.js",
-    "start-bg": "yarn build && nohup node server.js &",
+    "start": "yarn build && node server.mjs",
+    "start-bg": "yarn build && nohup node server.mjs &",
     "stylelint": "stylelint '**/*.css'"
   },
   "devDependencies": {
