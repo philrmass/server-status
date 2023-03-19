@@ -74,6 +74,12 @@ section + section {
   padding: var(--size-24);
 }
 
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .entry-controls {
   margin-top: var(--size-16);
   display: flex;

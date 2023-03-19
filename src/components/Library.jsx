@@ -1,17 +1,10 @@
 import { useState } from 'preact/hooks';
-import { detailGuid } from '../signals';
 
 function toggle(lastValue, value) {
-  if (value == lastValue) {
+  if (value === lastValue) {
     return null;
   }
   return value;
-}
-
-function renderInfo(guid) {
-  return (
-    <span onClick={() => detailGuid.value = guid}>  (i)</span>
-  );
 }
 
 function renderSongs(album, openAlbum) {
@@ -22,9 +15,8 @@ function renderSongs(album, openAlbum) {
   return (
     <div className="indent-1">
       { album.songs.map((song) => (
-        <div>
+        <div key={song.guid} className="ellipsis">
           <span>{ song.title }</span>
-          { renderInfo(song.guid) }
         </div>
       ))}
     </div>
@@ -39,15 +31,14 @@ function renderAlbums(artist, openArtist, openAlbum, setOpenAlbum) {
   return (
     <div className="indent-1">
       {artist.albums.map((album) => (
-        <>
-          <div>
+        <div key={album.guid}>
+          <div className="ellipsis">
             <span onClick={() => setOpenAlbum(toggle(openAlbum, album.title))}>
               { album.title }
             </span>
-            { renderInfo(album.guid) }
           </div>
           { renderSongs(album, openAlbum) }
-        </>
+        </div>
       ))}
     </div>
   );
@@ -67,15 +58,14 @@ export default function Library({ artists }) {
       <b>Library</b>
       <div className="artists">
         {artists?.map((artist) => (
-          <>
-            <div>
+          <div key={artist.guid}>
+            <div className="ellipsis">
               <span onClick={() => handleArtistClick(artist.name)}>
                 { artist.name }
               </span>
-              { renderInfo(artist.guid) }
             </div>
             { renderAlbums(artist, openArtist, openAlbum, setOpenAlbum) }
-          </>
+          </div>
         ))}
       </div>
     </div>

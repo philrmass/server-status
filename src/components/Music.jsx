@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'preact/hooks';
 import { useInterval, useVisibility } from 'utilities/hooks';
 import { toDuration } from '../utilities';
-import Detail from './Detail';
 import Library from './Library';
-import { detailGuid } from '../signals';
 
 function pickRandom(arr) {
-  const index = Math.floor(Math.random() * arr.length);
+  // const index = Math.floor(Math.random() * arr.length);
+  const index = 2650;
   console.log('Random', index);
 
   return arr[index];
@@ -52,7 +51,6 @@ async function getRandomSong(songGuids, baseUrl) {
   }
 }
 
-// ??? overflow hidden
 function renderSong(song) {
   if (!song) {
     return null;
@@ -61,11 +59,11 @@ function renderSong(song) {
   return (
     <div className="margin-top">
       <b>Random Song</b>
-      <div className="indent-2">
+      <div className="indent-2 ellipsis">
         <span>{ song.title }, </span>
         <span>{ toDuration(song.duration) }</span>
       </div>
-      <div className="indent-2">
+      <div className="indent-2 ellipsis">
         <span>{ song.artist } / </span>
         <span>{ song.album }</span>
       </div>
@@ -96,7 +94,7 @@ export default function Music({ address, port }) {
     };
 
     run();
-  }, [address, port, artists]);
+  }, [baseUrl, artists]);
 
   useInterval(() => {
     (async () => setSong(await getRandomSong(songGuids, baseUrl)))();
@@ -110,10 +108,6 @@ export default function Music({ address, port }) {
         { renderSong(song) }
         <Library artists={artists} />
       </section>
-      <Detail
-        baseUrl={baseUrl}
-        detailGuid={detailGuid}
-      />
     </>
   );
 }
