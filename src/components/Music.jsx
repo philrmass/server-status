@@ -4,9 +4,7 @@ import { toDuration } from '../utilities';
 import Library from './Library';
 
 function pickRandom(arr) {
-  // const index = Math.floor(Math.random() * arr.length);
-  const index = 2650;
-  console.log('Random', index);
+  const index = Math.floor(Math.random() * arr.length);
 
   return arr[index];
 }
