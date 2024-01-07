@@ -14,7 +14,20 @@ yarn
 yarn dev
 ```
 
+## To Run
+```
+yarn start
+```
+
 ## To Deploy
 ```
 yarn deploy
+```
+
+## Run on a server
+```
+ccm
+cdp
+cd server-status
+yarn start-bg
 ```
