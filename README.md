@@ -31,3 +31,11 @@ cdp
 cd server-status
 yarn start-bg
 ```
+
+## Keep running on a server
+```
+npm install pm2 -g
+pm2 start "yarn start-bg"
+pm2 list
+pm2 stop 1
+```
