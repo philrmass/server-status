@@ -44,15 +44,14 @@ input[type="text"]:focus {
   border-bottom: 1px solid var(--text);
 }
 
+input[type="text"]::placeholder{
+  color: var(--grey);
+}
+
 section + section {
   border-top: 1px solid var(--border);
   padding-top: var(--size-16);
   margin-top: var(--size-16);
-}
-
-.artists {
-  max-height: 15rem;
-  overflow-y: scroll;
 }
 
 .entry {
@@ -102,12 +101,13 @@ section + section {
   font-weight: 700;
 }
 
-.title {
-  font-size: var(--font-large);
+.results {
+  max-height: 8.0rem;
+  overflow-y: scroll;
 }
 
-.margin-top {
-  padding-top: var(--size-4);
+.title {
+  font-size: var(--font-large);
 }
 
 .version {

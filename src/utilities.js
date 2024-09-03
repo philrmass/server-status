@@ -16,3 +16,54 @@ export function toDuration(totalSec) {
   }
   return `${minStr}:${secStr}`;
 }
+
+function getDescription(entry, type) {
+  if (type === 'song') {
+    return null;
+  } else if (type === 'album') {
+    return `${entry.songs.length} songs`;
+  } else if (type === 'artist') {
+    const songs = entry.albums.reduce((sum, album) => sum + album.songs.length, 0);
+    return `${entry.albums.length} albums, ${songs} songs`;
+  }
+}
+
+function matchEntry(term, label, entry, type) {
+  const lower = label.toLowerCase();
+  const description = getDescription(entry, type);
+
+  if (lower.includes(term)) {
+    return [{
+      description,
+      entry,
+      label,
+      type,
+    }];
+  }
+  return [];
+}
+
+function matchSongs(term, songs) {
+  return songs.reduce((all, song) => [
+    ...all,
+    ...matchEntry(term, song.title, song, 'song'),
+  ], []);
+}
+
+function matchAlbums(term, albums) {
+  return albums.reduce((all, album) => [
+    ...all,
+    ...matchEntry(term, album.title, album, 'album'),
+    ...matchSongs(term, album.songs),
+  ], []);
+}
+
+export function findMatches(artists, search) {
+  const term = search.toLowerCase();
+
+  return artists.reduce((all, artist) => [
+    ...all,
+    ...matchEntry(term, artist.name, artist, 'artist'),
+    ...matchAlbums(term, artist.albums),
+  ], []);
+}

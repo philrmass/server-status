@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { useInterval, useVisibility } from 'utilities/hooks';
 import { toDuration } from '../utilities';
-import Library from './Library';
+import Search from './Search';
 
 function pickRandom(arr) {
   const index = Math.floor(Math.random() * arr.length);
@@ -22,6 +22,18 @@ function getAllSongGuids(artists) {
     }, []);
     return [...all, ...artistGuids];
   }, []);
+}
+
+export function countSongs(artists) {
+  if (!artists) {
+    return 0;
+  }
+
+  return artists.reduce((sum, artist) => (
+    sum + artist.albums.reduce((count, album) => (
+      count + album.songs.length
+    ), 0)
+  ), 0);
 }
 
 async function getArtists(baseUrl) {
@@ -49,14 +61,34 @@ async function getRandomSong(songGuids, baseUrl) {
   }
 }
 
+function renderLibrary(artists) {
+  if (typeof artists === 'undefined') {
+    return <div>Checking...</div>;
+  }
+
+  if (artists === null) {
+    return <div>No Response.</div>;
+  }
+
+  const artistCount = artists?.length;
+  const songCount = countSongs(artists);
+
+  return (
+    <div className="indent-1">
+      <b>Library </b>
+      <span>{`${artistCount} artists, ${songCount} songs`}</span>
+    </div>
+  );
+}
+
 function renderSong(song) {
   if (!song) {
     return null;
   }
 
   return (
-    <div className="margin-top">
-      <b>Random Song</b>
+    <div>
+      <b className="indent-1">Random Song</b>
       <div className="indent-2 ellipsis">
         <span>{ song.title }, </span>
         <span>{ toDuration(song.duration) }</span>
@@ -78,34 +110,33 @@ export default function Music({ address, port }) {
   const intervalMs = 10000;
   const interval = isVisible ? intervalMs : null;
 
-  useEffect(() => {
-    (async () => setSong(await getRandomSong(songGuids, baseUrl)))();
-  }, [songGuids, baseUrl]);
-
-  useEffect(() => {
-    const run = async () => {
-      if (!artists) {
-        const data = await getArtists(baseUrl);
-        setArtists(data);
-        setSongGuids(getAllSongGuids(data));
-      }
-    };
-
-    run();
-  }, [baseUrl, artists]);
+  const setArtistData = (response) => {
+    if (response === null) {
+      setArtists(null);
+    } else {
+      setArtists(response);
+      setSongGuids(getAllSongGuids(response));
+    }
+  };
 
   useInterval(() => {
-    (async () => setSong(await getRandomSong(songGuids, baseUrl)))();
+    const update = async () => {
+      if (!artists || !song) {
+        setArtistData(await getArtists(baseUrl));
+      }
+      setSong(await getRandomSong(songGuids, baseUrl));
+    };
+
+    update();
   }, interval);
 
   return (
-    <>
-      <section>
-        <span className="title">Music Server</span>
-        <span>{` ${port}`}</span>
-        { renderSong(song) }
-        <Library artists={artists} />
-      </section>
-    </>
+    <section>
+      <span className="title">Music Server</span>
+      <span>{` ${port}`}</span>
+      { renderLibrary(artists) }
+      <Search artists={artists} />
+      { renderSong(song) }
+    </section>
   );
 }

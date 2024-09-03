@@ -5,6 +5,8 @@ import Sonos from './Sonos';
 import Status from './Status';
 
 // ??? add a logo
+// ??? finch to 8888
+// ??? lark 9999
 export default function Home() {
   const defaultAddress = '192.168.1.2';
   const [address, setAddress] = useLocalStorage('stAddress', defaultAddress);

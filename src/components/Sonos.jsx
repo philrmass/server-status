@@ -11,7 +11,7 @@ async function getStatus(address, port) {
 
     return parseData(data);
   } catch(err) {
-    return null;
+    return 'No Response';
   }
 }
 
@@ -72,8 +72,8 @@ function renderSong(item) {
 }
 
 function renderStatus(status) {
-  if (!status) {
-    return <div>No Response</div>;
+  if (typeof status === 'string') {
+    return <div>{ status }</div>;
   }
 
   if (status.length === 0) {
@@ -93,7 +93,7 @@ function renderStatus(status) {
 }
 
 export default function Sonos({ address, port }) {
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState('Checking...');
   const isVisible = useVisibility();
   const intervalMs = 2000;
   const interval = isVisible ? intervalMs : null;

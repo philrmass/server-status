@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 
 export default function TextInput({
+  placeholder,
   value,
   onChange,
 }) {
@@ -8,6 +9,7 @@ export default function TextInput({
 
   return (
     <input
+      placeholder={placeholder}
       type="text"
       value={edited}
       onInput={(e) => setEdited(e.target.value)}
