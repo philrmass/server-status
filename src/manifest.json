@@ -1,7 +1,7 @@
 {
   "name": "server-status",
   "short_name": "Server Status",
-  "start_url": "/server-status/",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
