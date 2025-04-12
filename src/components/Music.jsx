@@ -47,7 +47,7 @@ async function getArtists(baseUrl) {
 
 async function getSong(baseUrl, guid) {
   try {
-    const response = await fetch(`${baseUrl}/entries/${guid}`);
+    const response = await fetch(`${baseUrl}/songs/${guid}`);
     return await response.json();
   } catch (err) {
     return null;
