@@ -26,6 +26,11 @@ export default function Home() {
       />
       <Html
         address={address}
+        name="Junco"
+        port={3333}
+      />
+      <Html
+        address={address}
         name="Finch"
         port={8888}
       />
